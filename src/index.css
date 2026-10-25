@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Classic Cricket Green — Design Tokens ──────────────────────────────── */
+:root {
+  --color-primary:       #0B6E4F;
+  --color-primary-dark:  #084D38;
+  --color-primary-light: #1A9968;
+  --color-bg-dark:       #0A1A12;
+  --color-bg-card:       #12201B;
+  --color-bg-surface:    #182E26;
+  --color-text-primary:  #F0F8F0;
+  --color-text-secondary:#C1D9C7;
+  --color-text-muted:    #A3C9B0;
+  --color-border:        #1E4834;
+  --color-live:          #E57373;
+  --color-success:       #2E8B57;
+  --color-warning:       #C2B280;
+}
+
+/* Override the default body background with the new theme */
+body {
+  background: linear-gradient(135deg, #0A1A12 0%, #0F2318 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar       { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-surface); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary-light); }
+
+/* Animations */
+@keyframes pulse-custom {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* glow uses the new primary green */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(11, 110, 79, 0.4); }
+  50%       { box-shadow: 0 0 30px rgba(11, 110, 79, 0.7); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-pulse-custom { animation: pulse-custom 2s ease-in-out infinite; }
+.animate-glow         { animation: glow        2s ease-in-out infinite; }
+.animate-slide-up     { animation: slide-up    0.3s ease-out; }
+.animate-fade-in      { animation: fade-in     0.3s ease-out; }
+
+/* Component Layer ───────────────────────────────────────────────────── */
+@layer components {
+
+  /* Cards */
+  .card {
+    @apply bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50
+           p-4 shadow-lg backdrop-blur-sm transition-all duration-300
+           hover:border-slate-600/50 hover:shadow-xl;
+  }
+  .card-elevated   { @apply card shadow-2xl border-slate-600/50; }
+  .card-interactive {
+    @apply card hover:shadow-2xl cursor-pointer;
+    border-color: rgba(11, 110, 79, 0.25);
+  }
+  .card-interactive:hover { border-color: rgba(26, 153, 104, 0.4); }
+
+  /* Buttons */
+  .btn {
+    @apply font-semibold rounded-lg transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900;
+  }
+
+  /* Primary — Classic Cricket Green */
+  .btn-primary {
+    background: linear-gradient(to right, #0B6E4F, #1A9968);
+    @apply text-white shadow-lg hover:shadow-xl focus:ring-green-600;
+  }
+  .btn-primary:hover  { background: linear-gradient(to right, #1A9968, #22b57a); }
+  .btn-primary:active { background: linear-gradient(to right, #084D38, #0B6E4F); }
+
+  /* Secondary */
+  .btn-secondary {
+    @apply bg-slate-700 hover:bg-slate-600 active:bg-slate-800
+           text-white border border-slate-600 hover:border-slate-500 focus:ring-slate-500;
+  }
+  .btn-secondary-lg { @apply btn-secondary px-6 py-3 text-lg; }
+
+  /* Danger */
+  .btn-danger {
+    @apply bg-gradient-to-r from-red-700 to-red-600
+           hover:from-red-600 hover:to-red-500
+           active:from-red-800 active:to-red-700
+           text-white shadow-lg hover:shadow-xl focus:ring-red-500;
+  }
+
+  /* Outline — green border */
+  .btn-outline {
+    @apply bg-transparent border-2 text-green-400 hover:text-green-300 focus:ring-green-600;
+    border-color: #0B6E4F;
+  }
+  .btn-outline:hover { background-color: rgba(11, 110, 79, 0.1); }
+
+  .btn-icon { @apply flex items-center justify-center gap-2 rounded-full transition-all; }
+
+  /* Input Fields */
+  .input-field {
+    @apply w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg
+           text-white placeholder-slate-400 focus:outline-none focus:ring-2
+           focus:border-transparent transition-all;
+    --tw-ring-color: #0B6E4F;
+  }
+  .input-field-lg { @apply input-field px-6 py-4 text-lg; }
+
+  /* Typography */
+  .heading-1 { @apply text-5xl md:text-6xl font-black tracking-tight; }
+  .heading-2 { @apply text-4xl md:text-5xl font-bold tracking-tight; }
+  .heading-3 { @apply text-3xl md:text-4xl font-bold tracking-tight; }
+  .heading-4 { @apply text-2xl font-bold; }
+  .text-muted     { @apply text-slate-400; }
+  .text-secondary { @apply text-slate-300; }
+
+  /* Status Badges */
+  .badge             { @apply inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm; }
+  .badge-live        { @apply badge bg-red-500/20 text-red-400 border border-red-500/30 animate-glow; }
+  .badge-upcoming    { @apply badge bg-green-500/20 text-green-400 border border-green-500/30; }
+  .badge-completed   { @apply badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30; }
+  .badge-innings-break { @apply badge bg-amber-500/20 text-amber-400 border border-amber-500/30; }
+
+  /* Score Display */
+  .score-display { @apply text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter; }
+  .overs-display { @apply text-2xl md:text-3xl font-bold tabular-nums; }
+
+  /* Dividers */
+  .divider { @apply my-6 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent; }
+
+  /* Gradients */
+  .gradient-primary { @apply bg-gradient-to-r from-teal-600 to-teal-500; }
+  .gradient-dark    { @apply bg-gradient-to-b from-slate-800 to-slate-900; }
+
+  /* Shadows */
+  .shadow-glow { @apply shadow-lg shadow-green-500/20; }
+  .shadow-card { @apply shadow-xl shadow-black/50; }
+
+  /* Glass effect */
+  .glass { @apply bg-slate-800/50 backdrop-blur-xl border border-slate-700/50; }
+}
+
+/* Smooth colour transitions globally */
+* { @apply transition-colors duration-200; }
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  @apply outline-none;
+}
+
+/* ── Match Celebration Animations ───────────────────────────────────────── */
+
+@keyframes bounce-in {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes scale-up {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float-up {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, -100px); opacity: 0; }
+}
+
+@keyframes particle {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx, 50px), var(--ty, -50px)) scale(0); opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-200px) rotate(720deg); opacity: 0; }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-scale-up {
+  animation: scale-up 0.4s ease-out;
+}
+
+.animate-float-up {
+  animation: float-up 1.5s ease-out forwards;
+}
+
+.animate-particle {
+  animation: particle 1s ease-out forwards;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-confetti {
+  animation: confetti 1s ease-out forwards;
+}
