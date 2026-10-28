@@ -119,3 +119,20 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion:reduce) {
  *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
+
+
+/* Translate existing utility colors into the new cricket-green palette. */
+body .bg-slate-950 { background-color: #070d09; }
+body .bg-slate-900 { background-color: #0b1410; }
+body .bg-slate-800 { background-color: #141f19; }
+body .bg-slate-700 { background-color: #202d24; }
+body .bg-slate-700\/50 { background-color: rgba(32,45,36,.62); }
+body .border-slate-700, body .border-slate-600 { border-color: rgba(148,163,184,.17); }
+body .text-slate-400 { color: #9aaca0; }
+body .text-slate-500 { color: #7f9285; }
+body .text-teal-400, body .text-teal-300 { color: #bef264; }
+body .border-teal-500, body .border-teal-400 { border-color: rgba(163,230,53,.35); }
+body .bg-teal-600 { background-color: #166534; }
+body .bg-teal-500 { background-color: #218348; }
+body .hover\\:bg-teal-500:hover { background-color: #279951; }
+body .focus\\:ring-green-600:focus { --tw-ring-color: #a3e635; }
