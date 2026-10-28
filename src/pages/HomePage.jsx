@@ -30,8 +30,8 @@ export function HomePage() {
     return () => { alive = false; clearInterval(interval); };
   }, []);
 
-  const liveMatches = matches.filter(m => m.status === 'LIVE');
-  const upcomingMatches = matches.filter(m => ['UPCOMING','CREATED','SETUP','INNINGS_BREAK','TIED'].includes(m.status));
+  const liveMatches = matches.filter(m => ['LIVE','INNINGS_BREAK','TIED','SUPER_OVER'].includes(m.status));
+  const upcomingMatches = matches.filter(m => ['UPCOMING','CREATED','SETUP'].includes(m.status));
   const completedMatches = matches.filter(m => m.status === 'COMPLETED');
   const getTabMatches = () => activeTab === 'live' ? liveMatches : activeTab === 'upcoming' ? upcomingMatches : completedMatches;
   const tabs = [
