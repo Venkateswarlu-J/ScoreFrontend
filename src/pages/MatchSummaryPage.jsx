@@ -20,7 +20,7 @@ export function MatchSummaryPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="score-page">
           <LoadingSpinner />
         </div>
       </Layout>
@@ -41,9 +41,10 @@ export function MatchSummaryPage() {
     <Layout>
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-black mb-4">Match Complete</h1>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-lime-300">Final scorecard</p>
+          <h1 className="mb-4 text-3xl font-black sm:text-4xl">Match complete</h1>
           {match.result && (
-            <p className="text-2xl font-bold text-teal-400 mb-4">{match.result.resultText}</p>
+            <p className="mb-4 text-xl font-bold text-lime-300 sm:text-2xl">{match.result.resultText}</p>
           )}
           <p className="text-slate-400">
             {match.team1?.teamName} vs {match.team2?.teamName}
@@ -56,7 +57,7 @@ export function MatchSummaryPage() {
           {match.innings2 && <ScorecardTable innings={{ ...match.innings2, match }} />}
         </div>
 
-        <div className="card flex gap-3">
+        <div className="card flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
             onClick={handleCopyLink}
             className="flex-1 btn-secondary py-3 flex items-center justify-center gap-2"
