@@ -13,7 +13,7 @@ export function MatchCard({ match }) {
         <StatusBadge status={match.status} />
       </div>
 
-      {match.status === 'LIVE' && (
+      {['LIVE','INNINGS_BREAK','TIED','SUPER_OVER'].includes(match.status) && (
         <div className="mb-4 grid grid-cols-2 gap-3 rounded-xl border border-white/5 bg-black/15 p-3 sm:gap-4 sm:p-4">
           <div>
             <p className="text-xs text-slate-400">Score</p>
