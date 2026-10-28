@@ -136,7 +136,7 @@ export function MatchSetupPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="mx-auto w-full max-w-2xl px-4 py-5 sm:py-8">
           <LoadingSpinner />
         </div>
       </Layout>
@@ -182,11 +182,12 @@ export function MatchSetupPage() {
   return (
     <Layout>
       <div className="max-w-2xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-black mb-6">Match Setup</h1>
+        <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-lime-300">Before the first ball</p>
+        <h1 className="mb-6 text-2xl font-black sm:text-3xl">Match setup</h1>
 
         <div className="card mb-6">
           <h2 className="text-lg font-bold mb-4">Match Info</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 min-[420px]:grid-cols-2">
             <div>
               <p className="text-sm text-slate-400">Team 1</p>
               <p className="font-bold">{match.team1.teamName}</p>
@@ -213,7 +214,7 @@ export function MatchSetupPage() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-semibold text-slate-300 mb-2">Toss Won By</label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2">
                 <button
                   onClick={() => { setTossWinner('team1'); setStrikerId(''); setNonStrikerId(''); setBowlerId(''); }}
                   className={`p-3 rounded-lg font-semibold transition ${
