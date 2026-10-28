@@ -100,7 +100,7 @@ export function LiveScorePage() {
   if (error || !match) {
     return (
       <Layout>
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="score-page">
           <ErrorState message={error || 'Match not found'} />
         </div>
       </Layout>
@@ -124,7 +124,7 @@ export function LiveScorePage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="score-page">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3 sm:mb-6">
           <div>
             <h1 className="mb-1 break-words text-xl font-black sm:text-3xl">
