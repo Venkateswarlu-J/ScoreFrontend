@@ -146,7 +146,7 @@ export function MatchSetupPage() {
   if (error || !match) {
     return (
       <Layout>
-        <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="mx-auto w-full max-w-2xl px-4 py-5 sm:py-8">
           <ErrorState message={error || 'Match not found'} />
         </div>
       </Layout>
@@ -160,7 +160,7 @@ export function MatchSetupPage() {
   if (!team1HasPlayers || !team2HasPlayers) {
     return (
       <Layout>
-        <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="mx-auto w-full max-w-2xl px-4 py-5 sm:py-8">
           <div className="card text-center">
             <h2 className="text-xl font-bold mb-4 text-amber-400">⚠️ No Players Registered</h2>
             <p className="text-slate-300 mb-4">
@@ -181,7 +181,7 @@ export function MatchSetupPage() {
 
   return (
     <Layout>
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="mx-auto w-full max-w-2xl px-4 py-5 sm:py-8">
         <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-lime-300">Before the first ball</p>
         <h1 className="mb-6 text-2xl font-black sm:text-3xl">Match setup</h1>
 
