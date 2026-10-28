@@ -271,10 +271,10 @@ export function ScorerPage() {
             <p className="text-xs font-bold uppercase tracking-[.16em] text-lime-300">Operator console</p>
             <h1 className="mt-1 text-xl font-black sm:text-2xl">Live scoring</h1>
           </div>
-          <span className={\`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-bold \${isConnected ? 'border-emerald-400/20 bg-emerald-400/10 text-emerald-300' : 'border-rose-400/20 bg-rose-400/10 text-rose-300'}\`}>
-            <span className={\`h-2 w-2 rounded-full \${isConnected ? 'bg-emerald-400' : 'bg-rose-400'}\`} />
-            {isConnected ? 'Connected' : 'Reconnecting'}
-          </span>
+          <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-bold ${isConnected ? 'border-emerald-400/20 bg-emerald-400/10 text-emerald-300' : 'border-rose-400/20 bg-rose-400/10 text-rose-300'}`}>
+  <span className={`h-2 w-2 rounded-full ${isConnected ? 'bg-emerald-400' : 'bg-rose-400'}`} />
+  {isConnected ? 'Connected' : 'Reconnecting'}
+</span>
         </div>
         <ScoreHeader match={match} />
 
