@@ -90,7 +90,7 @@ export function LiveScorePage() {
   if (loading) {
     return (
       <Layout>
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="score-page">
           <LoadingSpinner />
         </div>
       </Layout>
@@ -125,9 +125,9 @@ export function LiveScorePage() {
   return (
     <Layout>
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 sm:mb-6">
           <div>
-            <h1 className="text-3xl font-black mb-2">
+            <h1 className="mb-1 break-words text-xl font-black sm:text-3xl">
               {match.team1?.teamName} vs {match.team2?.teamName}
             </h1>
             <p className="text-slate-400">{match.venue || 'No venue'}</p>
@@ -151,7 +151,7 @@ export function LiveScorePage() {
           </div>
         )}
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="mb-4 grid grid-cols-1 gap-3 sm:mb-6 sm:grid-cols-2 sm:gap-4">
           <BatterCard batter={strikerData} isStriker={true} />
           <BatterCard batter={nonStrikerData} isStriker={false} />
         </div>
@@ -164,8 +164,8 @@ export function LiveScorePage() {
           <RecentBalls balls={innings?.lastBallSummary || []} />
         </div>
 
-        <div className="card mb-6">
-          <div className="flex gap-4 mb-4">
+        <div className="card mb-5 sm:mb-6">
+          <div className="mb-4 flex gap-2 border-b border-white/10 pb-2">
             <button
               onClick={() => setActiveTab('live')}
               className={`px-4 py-2 rounded-lg font-semibold transition ${
@@ -232,7 +232,7 @@ export function LiveScorePage() {
           )}
         </div>
 
-        <div className="card flex gap-3">
+        <div className="card flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
             onClick={handleCopyLink}
             className="flex-1 btn-secondary py-3 flex items-center justify-center gap-2"
