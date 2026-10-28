@@ -14,7 +14,7 @@ export function StatusBadge({ status }) {
   const config = statusConfig[status] || statusConfig.UPCOMING;
 
   return (
-    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border ${config.bg} ${config.text} ${config.border} text-sm font-semibold`}>
+    <div className={`inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1.5 text-[11px] font-bold tracking-wide sm:text-xs ${config.bg} ${config.text} ${config.border} text-sm font-semibold`}>
       {status === 'LIVE' && <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse-custom" />}
       {config.label}
     </div>
@@ -49,7 +49,7 @@ export function ErrorState({ message }) {
 
 export function ConnectionStatus({ isConnected }) {
   return (
-    <div className={`fixed bottom-4 right-4 px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 ${
+    <div className={`mx-auto mt-3 flex w-fit items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold sm:fixed sm:bottom-4 sm:right-4 sm:z-40 sm:mt-0 ${
       isConnected
         ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
         : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
@@ -64,8 +64,8 @@ export function ConfirmDialog({ isOpen, title, message, onConfirm, onCancel, isD
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-slate-800 rounded-lg border border-slate-700 p-6 max-w-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+      <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-slate-900 p-4 shadow-2xl sm:p-6">
         <h2 className="text-lg font-bold mb-2">{title}</h2>
         <p className="text-slate-300 mb-6">{message}</p>
         <div className="flex gap-3">

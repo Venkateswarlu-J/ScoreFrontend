@@ -4,20 +4,20 @@ import { StatusBadge } from '../common/index.jsx';
 
 export function MatchCard({ match }) {
   return (
-    <div className="card hover:border-slate-600 transition">
-      <div className="flex justify-between items-start mb-4">
+    <div className="card card-interactive">
+      <div className="mb-4 flex items-start justify-between gap-3">
         <div>
-          <h3 className="text-lg font-bold">{match.team1?.teamName} vs {match.team2?.teamName}</h3>
+          <h3 className="break-words text-base font-bold sm:text-lg">{match.team1?.teamName} vs {match.team2?.teamName}</h3>
           <p className="text-sm text-slate-400">{match.venue || 'No venue'}</p>
         </div>
         <StatusBadge status={match.status} />
       </div>
 
-      {match.status === 'LIVE' && (
-        <div className="grid grid-cols-2 gap-4 mb-4">
+      {['LIVE','INNINGS_BREAK','TIED','SUPER_OVER'].includes(match.status) && (
+        <div className="mb-4 grid grid-cols-2 gap-3 rounded-xl border border-white/5 bg-black/15 p-3 sm:gap-4 sm:p-4">
           <div>
             <p className="text-xs text-slate-400">Score</p>
-            <p className="text-2xl font-bold">{match.innings1?.total || 0}/{match.innings1?.wickets || 0}</p>
+            <p className="text-2xl font-black tabular-nums text-white">{(match.currentInnings === 2 ? match.innings2?.total : match.innings1?.total) || 0}/{(match.currentInnings === 2 ? match.innings2?.wickets : match.innings1?.wickets) || 0}</p>
           </div>
           <div>
             <p className="text-xs text-slate-400">Overs</p>
@@ -32,7 +32,7 @@ export function MatchCard({ match }) {
         </div>
       )}
 
-      <div className="flex gap-2 pt-4 border-t border-slate-700">
+      <div className="flex gap-2 border-t border-white/10 pt-4">
         <a href={`/match/${match.publicId}`} className="flex-1 btn-secondary py-2 text-center text-sm">
           View
         </a>
@@ -50,15 +50,15 @@ export function ScoreHeader({ match }) {
   const innings = match.currentInnings === 1 ? match.innings1 : match.innings2;
 
   return (
-    <div className="card mb-4">
+    <div className="card mb-4 overflow-hidden border-lime-300/15" style={{background:"radial-gradient(ellipse at top,rgba(163,230,53,.09),transparent 62%),linear-gradient(145deg,rgba(25,40,30,.98),rgba(10,20,13,.99))"}}>
       <div className="text-center">
         <p className="text-sm text-slate-400 mb-2">
           {match.currentInnings === 1 ? '1st Innings' : '2nd Innings'} • {innings?.battingTeamName || match.team1?.teamName}
         </p>
-        <p className="text-6xl md:text-8xl font-black tracking-tight mb-2">
+        <p className="mb-2 text-6xl font-black tracking-tight tabular-nums sm:text-7xl md:text-8xl">
           {innings?.total || 0}<span className="text-2xl">/{innings?.wickets || 0}</span>
         </p>
-        <p className="text-xl text-slate-400">{innings?.overs || '0.0'} / {match.oversPerInnings} overs</p>
+        <p className="text-base font-semibold text-slate-300 sm:text-xl">{innings?.overs || '0.0'} <span className="text-slate-500">/ {match.oversPerInnings} overs</span></p>
 
         {match.currentInnings === 2 && match.innings2?.target && (
           <div className="mt-4 pt-4 border-t border-slate-700">
@@ -242,7 +242,7 @@ export function ScorecardTable({ innings }) {
   };
 
   return (
-    <div className="card overflow-x-auto mb-6">
+    <div className="card score-table-wrap mb-6">
       {/* Batting Innings */}
       <div className="mb-4">
         <h3 className="text-lg font-bold">{innings.battingTeamName || 'Batting Team'} Innings</h3>

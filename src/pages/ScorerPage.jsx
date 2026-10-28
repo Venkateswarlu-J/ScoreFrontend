@@ -265,10 +265,20 @@ export function ScorerPage() {
 
   return (
     <Layout>
-      <div className="max-w-2xl mx-auto px-4 py-4 pb-20">
+      <div className="scorer-page mobile-bottom-space">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.16em] text-lime-300">Operator console</p>
+            <h1 className="mt-1 text-xl font-black sm:text-2xl">Live scoring</h1>
+          </div>
+          <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-bold ${isConnected ? 'border-emerald-400/20 bg-emerald-400/10 text-emerald-300' : 'border-rose-400/20 bg-rose-400/10 text-rose-300'}`}>
+  <span className={`h-2 w-2 rounded-full ${isConnected ? 'bg-emerald-400' : 'bg-rose-400'}`} />
+  {isConnected ? 'Connected' : 'Reconnecting'}
+</span>
+        </div>
         <ScoreHeader match={match} />
 
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="scorer-grid mb-3">
           <BatterCard batter={strikerData} isStriker={true} />
           <BatterCard batter={nonStrikerData} isStriker={false} />
         </div>
@@ -281,7 +291,11 @@ export function ScorerPage() {
           <RecentBalls balls={innings?.lastBallSummary || []} />
         </div>
 
-        <div className="mb-4">
+        <div className="rounded-2xl border border-lime-300/15 p-3 sm:p-4" style={{background:'rgba(9,22,13,.78)'}}>
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <h2 className="text-base font-black sm:text-lg">Score this delivery</h2>
+            <span className="text-xs text-slate-500">Tap once per ball</span>
+          </div>
           <ScorerControls
             match={match}
             matchId={matchId}

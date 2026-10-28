@@ -7,13 +7,13 @@ import { ConfirmDialog } from '../common/index.jsx';
 export function RunButtons({ onRun, disabled }) {
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4 gap-2 sm:gap-3">
         {[0, 1, 2, 3].map((n) => (
           <button
             key={n}
             onClick={() => onRun(n)}
             disabled={disabled}
-            className="btn-secondary py-4 text-2xl font-bold min-h-[60px] rounded-lg"
+            className="btn-secondary touch-target py-4 text-2xl font-black rounded-xl sm:text-3xl"
           >
             {n}
           </button>
@@ -24,14 +24,14 @@ export function RunButtons({ onRun, disabled }) {
         <button
           onClick={() => onRun(4)}
           disabled={disabled}
-          className="bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 text-2xl font-bold rounded-lg transition min-h-[60px]"
+          className="touch-target rounded-xl bg-emerald-700 py-4 text-2xl font-black text-white transition hover:bg-emerald-600 active:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 sm:text-3xl"
         >
           4
         </button>
         <button
           onClick={() => onRun(6)}
           disabled={disabled}
-          className="bg-amber-700 hover:bg-amber-600 active:bg-amber-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 text-2xl font-bold rounded-lg transition min-h-[60px]"
+          className="touch-target rounded-xl bg-lime-700 py-4 text-2xl font-black text-white transition hover:bg-lime-600 active:bg-lime-500 disabled:cursor-not-allowed disabled:opacity-50 sm:text-3xl"
         >
           6
         </button>
@@ -102,7 +102,7 @@ export function ExtrasPanel({ onExtra, disabled }) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2 card">
+    <div className="card grid grid-cols-2 gap-2 sm:gap-3">
       <button
         onClick={() => handleExtraType('wide')}
         disabled={disabled}
@@ -195,8 +195,8 @@ export function WicketFlow({ isOpen, dismissalTypes, batters, strikerId, onSelec
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-end z-50">
-      <div className="w-full bg-slate-800 rounded-t-lg border border-b-0 border-slate-700 p-6 max-h-[80vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-4">
+      <div className="max-h-[88dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl border border-white/10 bg-slate-900 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:rounded-2xl sm:p-6">
         <h2 className="text-lg font-bold mb-4">Record Wicket</h2>
 
         <div className="mb-4">
@@ -289,8 +289,8 @@ export function BatterSelector({ isOpen, batters, alreadyIn, dismissedIds, onSel
   const available = batters.filter(p => !alreadyIn.has(p.playerId));
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-end z-50">
-      <div className="w-full bg-slate-800 rounded-t-lg border border-b-0 border-slate-700 p-6 max-h-[80vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-4">
+      <div className="max-h-[88dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl border border-white/10 bg-slate-900 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:rounded-2xl sm:p-6">
         <h2 className="text-lg font-bold mb-4">Select Next Batter</h2>
 
         {available.length === 0 ? (
@@ -374,8 +374,8 @@ export function BowlerSelector({ isOpen, bowlers, previousBowlerId, currentInnin
   });
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-end z-50">
-      <div className="w-full bg-slate-800 rounded-t-lg border border-b-0 border-slate-700 p-6 max-h-[80vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-4">
+      <div className="max-h-[88dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl border border-white/10 bg-slate-900 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:rounded-2xl sm:p-6">
         <h2 className="text-lg font-bold mb-4">Select Next Bowler</h2>
 
         {eligibleBowlers.length === 0 ? (
