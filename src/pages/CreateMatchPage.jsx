@@ -155,8 +155,8 @@ export function CreateMatchPage() {
 
     return (
       <Layout>
-        <div className="max-w-3xl mx-auto px-4 py-8">
-          <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/30 rounded-2xl p-8 mb-8">
+        <div className="mx-auto w-full max-w-3xl px-4 py-5 sm:py-8">
+          <div className="mb-8 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 p-4 sm:p-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="text-4xl">✅</div>
               <h2 className="text-3xl font-black text-emerald-400">Match Created!</h2>
@@ -224,7 +224,7 @@ export function CreateMatchPage() {
               </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <a
                 href={setupUrl}
                 className="flex-1 btn btn-primary py-4 text-center font-bold text-lg rounded-xl"
@@ -246,17 +246,18 @@ export function CreateMatchPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="mx-auto w-full max-w-4xl px-4 py-5 sm:py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-black mb-2">Create a Match</h1>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-lime-300">Make it official</p>
+          <h1 className="mb-2 text-3xl font-black sm:text-4xl">Create a match</h1>
           <p className="text-slate-300">Set up a quick face-to-face match or a tournament game</p>
         </div>
 
-        <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-xl">
+        <div className="rounded-2xl border border-white/10 bg-slate-800/70 p-4 shadow-xl sm:p-8">
           {/* Match Type */}
           <div className="mb-8">
             <label className="block text-sm font-semibold text-slate-200 mb-4">Match Type</label>
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2">
               {[
                 { value: 'standalone', label: '⚡ Quick Match' },
                 { value: 'tournament', label: '🏆 Tournament Match' }
@@ -277,9 +278,9 @@ export function CreateMatchPage() {
           </div>
 
           {/* Teams and Players */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="mb-8 grid grid-cols-1 gap-5 sm:gap-8 md:grid-cols-2">
             {/* Team 1 */}
-            <div className="bg-slate-700/50 rounded-xl p-6 border border-slate-600">
+            <div className="rounded-xl border border-white/10 bg-slate-700/30 p-4 sm:p-6">
               <label className="block text-sm font-semibold text-slate-200 mb-2">Team A</label>
               <input
                 type="text"
@@ -375,7 +376,7 @@ export function CreateMatchPage() {
           </div>
 
           {/* Venue & Date */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="mb-8 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
             <div>
               <label className="block text-sm font-semibold text-slate-200 mb-2">Venue (Optional)</label>
               <input
