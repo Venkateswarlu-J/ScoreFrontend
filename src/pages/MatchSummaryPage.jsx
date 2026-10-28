@@ -30,7 +30,7 @@ export function MatchSummaryPage() {
   if (error || !match) {
     return (
       <Layout>
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="score-page">
           <ErrorState message={error || 'Match not found'} />
         </div>
       </Layout>
@@ -39,7 +39,7 @@ export function MatchSummaryPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="score-page">
         <div className="text-center mb-8">
           <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-lime-300">Final scorecard</p>
           <h1 className="mb-4 text-3xl font-black sm:text-4xl">Match complete</h1>
